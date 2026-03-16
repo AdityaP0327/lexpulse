@@ -1,0 +1,39 @@
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middleware
+app.use(cors());
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
+
+// Routes
+const documentsRouter = require('./routes/documents');
+const dashboardRouter = require('./routes/dashboard');
+
+app.use('/api/documents', documentsRouter);
+app.use('/api/health-score', dashboardRouter);
+
+// MongoDB Connection
+const connectDB = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO_URI, { serverSelectionTimeoutMS: 2000 });
+        console.log('MongoDB connected to actual database');
+    } catch (err) {
+        console.log('MongoDB connection failed. Using in-memory array fallback for MVP mock...');
+    }
+};
+connectDB();
+
+// Basic health check route
+app.get('/', (req, res) => {
+    res.send('LexPulse API is running');
+});
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
