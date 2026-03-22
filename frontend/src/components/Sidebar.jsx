@@ -5,8 +5,8 @@ import { Activity, Shield, FileText, Settings, HelpCircle } from 'lucide-react';
 const Sidebar = () => {
   return (
     <aside className="sidebar">
-      <div className="logo-container" style={{ paddingBottom: '1.5rem', justifyContent: 'center' }}>
-        <img src="/logo.png" alt="LexPulse Logo" style={{ maxWidth: '180px', width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 0 20px rgba(0, 194, 255, 0.2), 0 0 20px rgba(255, 59, 48, 0.2)' }} />
+      <div className="logo-container">
+        <img src="/logo.png" alt="LexPulse Logo" className="logo-image" />
       </div>
       
       <nav className="nav-menu">
