@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Search, Bell, User, Calendar } from 'lucide-react';
 
 const TopBar = () => {
   const [showNotif, setShowNotif] = useState(false);
+  const notifRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (notifRef.current && !notifRef.current.contains(event.target)) {
+        setShowNotif(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
   return (
     <header className="topbar">
       <div className="search-bar">
@@ -11,7 +24,7 @@ const TopBar = () => {
       </div>
       
       <div className="topbar-actions">
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: 'relative' }} ref={notifRef}>
           <button className="btn-icon" onClick={() => setShowNotif(!showNotif)}>
             <Bell size={20} />
           </button>
