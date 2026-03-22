@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { ShieldAlert, AlertTriangle, Info, FileText, CheckCircle, UploadCloud } from 'lucide-react';
+import { ShieldAlert, AlertTriangle, Info, FileText, CheckCircle, UploadCloud, FolderPlus } from 'lucide-react';
 import axios from 'axios';
 import API_URL from '../config';
 
@@ -211,9 +211,10 @@ const Dashboard = () => {
       </h2>
       <div className={`page-grid ${result ? 'split-layout' : ''}`}>
         
-        {/* Upload Column */}
-        <div style={{ alignSelf: 'start' }}>
-          <input 
+        {/* Upload Section */}
+        <div style={{ alignSelf: 'start', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', width: '100%' }}>
+          <div>
+            <input 
             type="file" 
             ref={fileInputRef} 
             style={{ display: 'none' }} 
@@ -258,6 +259,28 @@ const Dashboard = () => {
                 <FileText size={16} /> {file.name}
               </div>
             )}
+          </div>
+          </div>
+          
+          {/* Bulk Upload Placeholder */}
+          <div 
+            className="upload-area"
+            style={{ 
+              cursor: 'not-allowed', 
+              background: 'linear-gradient(145deg, rgba(18, 22, 36, 0.4) 0%, rgba(10, 12, 20, 0.5) 100%)',
+              backdropFilter: 'blur(10px)',
+              borderRadius: '1.5rem', 
+              border: '2px dashed rgba(255,255,255,0.05)', 
+              padding: '4rem 2rem', 
+              textAlign: 'center',
+              opacity: 0.7
+            }}
+          >
+            <FolderPlus size={56} className="mx-auto" style={{ display: 'block', margin: '0 auto 1.5rem', color: 'var(--text-muted)' }} />
+            <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--text-secondary)' }}>
+              Bulk Upload
+            </h3>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>Upload multiple files at once<br/><span style={{ fontSize: '0.8rem', opacity: 0.7 }}>(Coming soon)</span></p>
           </div>
         </div>
 
