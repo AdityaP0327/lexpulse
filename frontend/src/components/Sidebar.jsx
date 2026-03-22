@@ -1,15 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Activity, Shield, FileText, Settings, HelpCircle, Scale } from 'lucide-react';
+import { Activity, Shield, FileText, Settings, HelpCircle } from 'lucide-react';
 
 const Sidebar = () => {
   return (
     <aside className="sidebar">
-      <div className="logo-container">
-        <div className="logo-icon" style={{ boxShadow: '0 0 20px rgba(255, 59, 48, 0.4)' }}>
-          <Scale size={20} />
-        </div>
-        <span className="logo-text text-gradient" style={{ textShadow: '0 0 10px rgba(0, 194, 255, 0.3)' }}>LexPulse</span>
+      <div className="logo-container" style={{ paddingBottom: '1.5rem', justifyContent: 'center' }}>
+        <img src="/logo.png" alt="LexPulse Logo" style={{ maxWidth: '180px', width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 0 20px rgba(0, 194, 255, 0.2), 0 0 20px rgba(255, 59, 48, 0.2)' }} />
       </div>
       
       <nav className="nav-menu">
