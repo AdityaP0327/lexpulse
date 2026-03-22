@@ -17,19 +17,7 @@ const TopBar = () => {
           </button>
           
           {showNotif && (
-            <div style={{ 
-              position: 'absolute', 
-              right: 0, 
-              top: '100%', 
-              marginTop: '0.5rem', 
-              background: 'var(--bg-surface)', 
-              border: '1px solid var(--border-light)', 
-              borderRadius: '8px', 
-              padding: '1rem', 
-              width: '280px', 
-              boxShadow: '0 10px 30px rgba(0,0,0,0.8)', 
-              zIndex: 100 
-            }}>
+            <div className="notification-dropdown">
                <h4 style={{ marginBottom: '1rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Notifications</h4>
                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.875rem', background: 'rgba(59, 130, 246, 0.1)', borderRadius: '6px', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
                  <Calendar size={20} color="#60A5FA" style={{ flexShrink: 0 }} />
