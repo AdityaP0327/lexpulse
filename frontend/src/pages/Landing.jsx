@@ -21,36 +21,34 @@ const Landing = () => {
     const handleGetStarted = () => navigate(isAuthenticated ? '/dashboard' : '/register');
 
     return (
-        <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', scrollBehavior: 'smooth' }}>
             
             {/* 1. Navigation Bar */}
             <nav className="landing-navbar">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <img src="/logo.png" alt="LexPulse" style={{ height: '32px', objectFit: 'contain' }} />
-                    <span className="logo-text desktop-only">LexPulse</span>
+                    <img src="/logo.png" alt="LexPulse" style={{ height: '28px', objectFit: 'contain' }} />
+                    <span className="logo-text desktop-only" style={{ fontSize: '1.125rem', fontWeight: 700, letterSpacing: '-0.02em' }}>LexPulse</span>
                 </div>
                 
-                <div className="desktop-only" style={{ display: 'flex', gap: '1.5rem', fontWeight: 500, color: 'var(--text-secondary)' }}>
+                <div className="desktop-only" style={{ display: 'flex', gap: '2rem', fontWeight: 500, fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
                     <a href="#problem">The Problem</a>
                     <a href="#solution">Solution</a>
                     <a href="#features">Features</a>
                     <a href="#pricing">Pricing</a>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                     <button onClick={toggleTheme} className="theme-toggle" aria-label="Toggle Theme">
-                        {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                        {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
                     </button>
-                    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-                        {isAuthenticated ? (
-                            <Link to="/dashboard" className="btn btn-primary" style={{ padding: '0.5rem 1rem' }}>Dashboard</Link>
-                        ) : (
-                            <>
-                                <Link to="/login" className="desktop-only" style={{ fontWeight: 500, color: 'var(--text-secondary)', marginRight: '0.5rem' }}>Login</Link>
-                                <Link to="/register" className="btn btn-primary" style={{ padding: '0.5rem 1rem' }}>Signup</Link>
-                            </>
-                        )}
-                    </div>
+                    {isAuthenticated ? (
+                        <Link to="/dashboard" className="btn btn-primary">Dashboard</Link>
+                    ) : (
+                        <>
+                            <Link to="/login" className="desktop-only" style={{ fontWeight: 500, fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Login</Link>
+                            <Link to="/register" className="btn btn-primary">Signup</Link>
+                        </>
+                    )}
                 </div>
             </nav>
 
@@ -60,7 +58,7 @@ const Landing = () => {
             )}
 
             {/* 2. Hero Section */}
-            <header className="landing-section" style={{ paddingTop: '8rem', textAlign: 'center', position: 'relative' }}>
+            <header className="landing-section" style={{ paddingTop: '10rem', textAlign: 'center', position: 'relative' }}>
                 <div className="badge badge-info" style={{ marginBottom: '2rem' }}>New: Legal Health Score Beta 🚀</div>
                 <h1 className="landing-title">
                     AI-Powered Legal <span className="text-gradient">Health Companion.</span>
@@ -68,11 +66,11 @@ const Landing = () => {
                 <p className="landing-subtitle">
                     Transforming Law from Reactive Crisis to Proactive Protection. Managing a business shouldn't feel like walking through a legal minefield. LexPulse monitors your legal health 24/7, giving you the clarity and tools to protect what you've built.
                 </p>
-                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-                    <button onClick={handleGetStarted} className="btn btn-primary" style={{ padding: '0.875rem 2rem', fontSize: '1.125rem', borderRadius: '40px' }}>
+                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                    <button onClick={handleGetStarted} className="btn btn-primary" style={{ padding: '0.875rem 2.5rem', fontSize: '1rem', borderRadius: '10px' }}>
                         Signup
                     </button>
-                    <a href="#problem" className="btn btn-secondary" style={{ padding: '0.875rem 2rem', fontSize: '1.125rem' }}>
+                    <a href="#problem" className="btn btn-secondary" style={{ padding: '0.875rem 2.5rem', fontSize: '1rem', borderRadius: '10px' }}>
                         See the Problem
                     </a>
                 </div>
