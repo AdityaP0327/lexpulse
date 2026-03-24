@@ -4,7 +4,7 @@ import {
     Scale, Moon, Sun, ArrowRight, ShieldCheck, FileText, 
     BrainCircuit, Calendar, TrendingUp, AlertTriangle, 
     CheckCircle2, XCircle, Search, Building2, Factory,
-    Stethoscope, Computer, Briefcase, Pill, Laptop
+    Stethoscope, Computer, Briefcase, Pill, Laptop, Bell
 } from 'lucide-react';
 import { ThemeContext } from '../context/ThemeContext';
 import { AuthContext } from '../context/AuthContext';
