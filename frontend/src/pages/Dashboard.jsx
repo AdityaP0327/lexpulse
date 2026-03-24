@@ -96,7 +96,7 @@ const Dashboard = () => {
 
       <div className="dashboard-grid" style={{ marginBottom: '2rem' }}>
         {/* Premium Health Score Card */}
-        <div className="card score-card" style={{ background: 'linear-gradient(180deg, var(--bg-surface) 0%, rgba(10, 12, 20, 0.4) 100%)', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}>
+        <div className="card score-card" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-light)', boxShadow: 'var(--shadow-lg)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', width: '100%', marginBottom: '1.5rem' }}>
             <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.25rem' }}>
               <ShieldAlert size={20} className="text-gradient" />
@@ -126,7 +126,7 @@ const Dashboard = () => {
                   <stop offset="100%" stopColor="#F87171" />
                 </linearGradient>
               </defs>
-              <circle cx="100" cy="100" r="90" stroke="rgba(255,255,255,0.03)" strokeWidth="14" fill="none" />
+              <circle cx="100" cy="100" r="90" stroke="var(--border-light)" strokeWidth="14" fill="none" />
               <circle 
                 cx="100" cy="100" r="90" 
                 stroke={score > 80 ? "url(#scoreGradientGood)" : score > 50 ? "url(#scoreGradientWarn)" : "url(#scoreGradientDanger)"} 
@@ -138,7 +138,7 @@ const Dashboard = () => {
                 style={{ transition: 'stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1)', filter: 'drop-shadow(0 0 8px rgba(0,0,0,0.5))' }}
               />
             </svg>
-            <div className="score-value" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>{dashboardLoading ? '--' : (score === null ? 'N/A' : score)}</div>
+            <div className="score-value">{dashboardLoading ? '--' : (score === null ? 'N/A' : score)}</div>
           </div>
           
           <div style={{ textAlign: 'center', zIndex: 2 }}>
@@ -174,10 +174,10 @@ const Dashboard = () => {
                  Syncing Vault Data...
                </div>
             ) : healthData.alerts.length === 0 ? (
-              <div className="alert-item" style={{ background: 'rgba(16, 185, 129, 0.05)', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
-                <div className="alert-icon" style={{ background: 'rgba(16, 185, 129, 0.2)', color: '#34D399' }}><CheckCircle size={20} /></div>
+              <div className="alert-item" style={{ background: 'var(--success-bg-light)', border: '1px solid var(--success-border)' }}>
+                <div className="alert-icon" style={{ background: 'var(--success-bg-dark)', color: 'var(--success-color)' }}><CheckCircle size={20} /></div>
                 <div className="alert-content">
-                  <h4 style={{ color: '#E2E8F0' }}>Zero Active Threats</h4>
+                  <h4 style={{ color: 'var(--text-primary)' }}>Zero Active Threats</h4>
                   <p style={{ color: 'var(--text-secondary)' }}>All organizational documents are in good standing.</p>
                 </div>
               </div>
@@ -195,10 +195,10 @@ const Dashboard = () => {
                   </div>
                   <div className="alert-content" style={{ width: '100%' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
-                      <h4 style={{ fontSize: '1.05rem', color: '#F8FAFC' }}>{alert.title}</h4>
+                      <h4 style={{ fontSize: '1.05rem', color: 'var(--text-primary)' }}>{alert.title}</h4>
                       {alert.date && <span className="alert-time" style={{ background: 'var(--bg-card)', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>{new Date(alert.date).toLocaleDateString()}</span>}
                     </div>
-                    <p style={{ lineHeight: '1.6', marginBottom: '1rem', color: '#CBD5E1' }}>{alert.desc}</p>
+                    <p style={{ lineHeight: '1.6', marginBottom: '1rem', color: 'var(--text-secondary)' }}>{alert.desc}</p>
                     <button className="btn btn-secondary" style={{ 
                       padding: '0.4rem 1rem', 
                       fontSize: '0.8rem',
@@ -225,7 +225,7 @@ const Dashboard = () => {
           </h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem' }}>
             {upcomingTasks.length > 0 ? upcomingTasks.map(task => (
-              <div key={task._id} style={{ display: 'flex', justifyContent: 'space-between', padding: '1rem', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid var(--border-light)' }}>
+              <div key={task._id} style={{ display: 'flex', justifyContent: 'space-between', padding: '1rem', background: 'var(--bg-main)', borderRadius: '8px', border: '1px solid var(--border-light)' }}>
                 <div>
                   <h4 style={{ marginBottom: '0.25rem' }}>{task.title}</h4>
                   <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Due: {new Date(task.dueDate).toLocaleDateString()}</div>
@@ -271,13 +271,12 @@ const Dashboard = () => {
               opacity: aiLoading ? 0.7 : 1, 
               pointerEvents: aiLoading ? 'none' : 'auto', 
               cursor: 'pointer', 
-              background: 'linear-gradient(145deg, rgba(18, 22, 36, 0.6) 0%, rgba(10, 12, 20, 0.8) 100%)',
-              backdropFilter: 'blur(10px)',
+              background: 'var(--bg-surface)',
               borderRadius: '1.5rem', 
-              border: aiLoading ? '2px dashed var(--primary)' : '2px dashed rgba(255,255,255,0.1)', 
+              border: aiLoading ? '2px dashed var(--primary)' : '2px dashed var(--border-light)', 
               padding: '4rem 2rem', 
               textAlign: 'center',
-              boxShadow: 'inset 0 0 20px rgba(0,0,0,0.5), 0 10px 30px rgba(0,0,0,0.3)',
+              boxShadow: 'var(--shadow-md)',
               transition: 'all 0.3s ease'
             }}
           >
@@ -286,7 +285,7 @@ const Dashboard = () => {
             ) : (
                <UploadCloud size={56} className="upload-icon mx-auto" style={{ display: 'block', margin: '0 auto 1.5rem', color: 'var(--primary)', filter: 'drop-shadow(0 0 8px rgba(0,194,255,0.5))' }} />
             )}
-            <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: aiLoading ? 'var(--primary)' : 'white' }}>
+            <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: aiLoading ? 'var(--primary)' : 'var(--text-primary)' }}>
               {aiLoading ? 'Analyzing with Legal-BERT...' : 'Upload Contract'}
             </h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Drag & drop or <span className="text-gradient" style={{ fontWeight: 'bold' }}>browse files</span> to scan</p>
@@ -303,10 +302,9 @@ const Dashboard = () => {
             className="upload-area"
             style={{ 
               cursor: 'not-allowed', 
-              background: 'linear-gradient(145deg, rgba(18, 22, 36, 0.4) 0%, rgba(10, 12, 20, 0.5) 100%)',
-              backdropFilter: 'blur(10px)',
+              background: 'var(--bg-surface)',
               borderRadius: '1.5rem', 
-              border: '2px dashed rgba(255,255,255,0.05)', 
+              border: '2px dashed var(--border-light)', 
               padding: '4rem 2rem', 
               textAlign: 'center',
               opacity: 0.7
@@ -325,17 +323,17 @@ const Dashboard = () => {
           <div className="card" style={{ 
             animation: 'fadeIn 0.6s ease-out',
             border: `1px solid ${result.risk_level === 'High Risk' || result.risk_level === 'Critical Risk' ? 'rgba(239,68,68,0.3)' : result.risk_level === 'Moderate Risk' ? 'rgba(245,158,11,0.3)' : 'rgba(16,185,129,0.3)'}`,
-            boxShadow: `0 10px 40px ${result.risk_level === 'High Risk' || result.risk_level === 'Critical Risk' ? 'rgba(239,68,68,0.1)' : result.risk_level === 'Moderate Risk' ? 'rgba(245,158,11,0.1)' : 'rgba(16,185,129,0.1)'}`,
-            background: 'linear-gradient(180deg, var(--bg-surface) 0%, rgba(10, 12, 20, 0.95) 100%)'
+            boxShadow: `var(--shadow-lg)`,
+            background: 'var(--bg-surface)'
           }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', paddingBottom: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.05)', flexWrap: 'wrap', gap: '1rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', paddingBottom: '1.5rem', borderBottom: '1px solid var(--border-light)', flexWrap: 'wrap', gap: '1rem' }}>
               <div>
                 <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>Scan Complete</h3>
                 <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>{file?.name}</span>
               </div>
-              <div style={{ textAlign: 'right', background: 'rgba(0,0,0,0.3)', padding: '0.75rem 1.5rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <div style={{ textAlign: 'right', background: 'var(--bg-main)', padding: '0.75rem 1.5rem', borderRadius: '1rem', border: '1px solid var(--border-light)' }}>
                 <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-muted)', display: 'block', marginBottom: '0.25rem' }}>Document Score</span>
-                <div style={{ fontSize: '2.5rem', lineHeight: '1', fontWeight: 'bold', color: result.risk_level === 'High Risk' || result.risk_level === 'Critical Risk' ? '#F87171' : result.risk_level === 'Moderate Risk' ? '#FBBF24' : '#34D399', textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
+                <div style={{ fontSize: '2.5rem', lineHeight: '1', fontWeight: 'bold', color: result.risk_level === 'High Risk' || result.risk_level === 'Critical Risk' ? '#EF4444' : result.risk_level === 'Moderate Risk' ? '#F59E0B' : '#10B981' }}>
                   {result.legal_health_score}<span style={{fontSize: '1.25rem', color: 'var(--text-muted)'}}>/100</span>
                 </div>
               </div>
@@ -346,7 +344,7 @@ const Dashboard = () => {
                 <h4 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#34D399', fontSize: '1.1rem', marginBottom: '1rem' }}><CheckCircle size={18} /> Found Clauses</h4>
                 <ul style={{ listStyle: 'none', paddingLeft: '0', margin: 0 }}>
                   {result.detected_clauses.length > 0 ? result.detected_clauses.map((clause, i) => (
-                    <li key={i} style={{ marginBottom: '0.75rem', display: 'flex', gap: '0.5rem', alignItems: 'center', color: '#E2E8F0', fontSize: '0.95rem' }}>
+                    <li key={i} style={{ marginBottom: '0.75rem', display: 'flex', gap: '0.5rem', alignItems: 'center', color: 'var(--text-primary)', fontSize: '0.95rem' }}>
                       <span style={{ color: '#34D399', fontSize: '1.2rem' }}>•</span>
                       {clause}
                     </li>
@@ -358,7 +356,7 @@ const Dashboard = () => {
                 <h4 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#F87171', fontSize: '1.1rem', marginBottom: '1rem' }}><AlertTriangle size={18} /> Missing Clauses</h4>
                 <ul style={{ listStyle: 'none', paddingLeft: '0', margin: 0 }}>
                   {result.missing_clauses.length > 0 ? result.missing_clauses.map((clause, i) => (
-                    <li key={i} style={{ marginBottom: '0.75rem', display: 'flex', gap: '0.5rem', alignItems: 'center', color: '#E2E8F0', fontSize: '0.95rem' }}>
+                    <li key={i} style={{ marginBottom: '0.75rem', display: 'flex', gap: '0.5rem', alignItems: 'center', color: 'var(--text-primary)', fontSize: '0.95rem' }}>
                       <span style={{ color: '#F87171', fontSize: '1.2rem' }}>•</span>
                       {clause}
                     </li>
@@ -371,7 +369,7 @@ const Dashboard = () => {
               <h4 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#FBBF24', fontSize: '1.1rem', marginBottom: '1rem' }}><ShieldAlert size={18} /> Detected Risk Phrases</h4>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 {result.risk_flags.length > 0 ? result.risk_flags.map((flag, i) => (
-                  <div key={i} style={{ padding: '1rem', background: 'linear-gradient(90deg, rgba(245,158,11,0.1) 0%, transparent 100%)', borderLeft: '3px solid #F59E0B', borderRadius: '4px', color: '#F8FAFC' }}>
+                  <div key={i} style={{ padding: '1rem', background: 'rgba(245,158,11,0.05)', borderLeft: '3px solid #F59E0B', borderRadius: '4px', color: 'var(--text-primary)' }}>
                     {flag}
                   </div>
                 )) : (
@@ -386,7 +384,7 @@ const Dashboard = () => {
               <h4 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem', fontSize: '1.1rem' }}>
                 <span style={{ background: 'var(--brand-gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>AI Recommendations</span> 💡
               </h4>
-              <ul style={{ paddingLeft: '0', color: '#CBD5E1', listStyle: 'none', margin: 0 }}>
+              <ul style={{ paddingLeft: '0', color: 'var(--text-secondary)', listStyle: 'none', margin: 0 }}>
                 {result.recommendations.length > 0 ? result.recommendations.map((rec, i) => (
                   <li key={i} style={{ marginBottom: '0.75rem', display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
                     <span style={{ color: 'var(--primary)', marginTop: '0.2rem' }}>→</span>
@@ -403,7 +401,7 @@ const Dashboard = () => {
             <h3 style={{ color: '#F87171', display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
                <AlertTriangle size={20} /> Analysis Error
             </h3>
-            <p style={{ color: '#E2E8F0' }}>{result.error}</p>
+            <p style={{ color: 'var(--text-primary)' }}>{result.error}</p>
           </div>
         )}
       </div>
