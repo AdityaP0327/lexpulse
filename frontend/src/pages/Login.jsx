@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
-import { Scale } from 'lucide-react';
+
 
 const Login = () => {
     const { login } = useContext(AuthContext);
@@ -23,9 +23,7 @@ const Login = () => {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', padding: '1rem' }}>
             <div className="card glass-panel" style={{ width: '100%', maxWidth: '400px', padding: '2.5rem' }}>
                 <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                    <div style={{ background: 'var(--brand-gradient)', width: '48px', height: '48px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem', boxShadow: 'var(--shadow-glow)' }}>
-                      <Scale size={24} color="white" />
-                    </div>
+                    <img src="/logo.png" alt="LexPulse" style={{ height: '48px', objectFit: 'contain', margin: '0 auto 1rem', display: 'block' }} />
                     <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Welcome Back</h2>
                     <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Sign in to continue to LexPulse</p>
                 </div>

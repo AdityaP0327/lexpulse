@@ -93,8 +93,13 @@ const Dashboard = () => {
           <p className="page-subtitle">Your organization's current legal risk assessment from recent AI scans.</p>
         </div>
       </div>
-
-      <div className="dashboard-grid" style={{ marginBottom: '2rem' }}>
+      {/* ═══ SECTION 1: Legal Health Overview ═══ */}
+      <section style={{ marginBottom: '3rem' }}>
+        <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)' }}>
+          <ShieldAlert size={20} style={{ color: 'var(--primary)' }} />
+          Legal Health Overview
+        </h2>
+        <div className="dashboard-grid">
         {/* Premium Health Score Card */}
         <div className="card score-card" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-light)', boxShadow: 'var(--shadow-lg)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', width: '100%', marginBottom: '1.5rem' }}>
@@ -215,9 +220,10 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      </section>
 
-      {/* Upcoming Tasks Preview */}
-      <div className="dashboard-grid" style={{ marginBottom: '2rem', gridTemplateColumns: '1fr' }}>
+      {/* ═══ SECTION 2: Upcoming Tasks ═══ */}
+      <section style={{ marginBottom: '3rem' }}>
         <div className="card" style={{ background: 'var(--bg-surface)' }}>
           <h3 style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.25rem' }}>
             <CheckSquare size={20} className="text-gradient" />
@@ -238,10 +244,11 @@ const Dashboard = () => {
           </div>
           <Link to="/tasks" className="btn btn-secondary" style={{ marginTop: '1.5rem' }}>View All Tasks</Link>
         </div>
-      </div>
+      </section>
 
-      {/* Premium Embedded AI Analysis Section */}
-      <h2 style={{ marginBottom: '1.5rem', marginTop: '3rem', fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+      {/* ═══ SECTION 3: AI Contract Scanner ═══ */}
+      <section style={{ marginBottom: '2rem' }}>
+      <h2 style={{ marginBottom: '1.5rem', fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
         <FileText className="text-gradient" size={24}/>
         On-Demand Contract Scans
       </h2>
@@ -405,6 +412,7 @@ const Dashboard = () => {
           </div>
         )}
       </div>
+      </section>
     </div>
   );
 };
