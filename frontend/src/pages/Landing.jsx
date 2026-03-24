@@ -54,7 +54,7 @@ const Landing = () => {
 
             {/* Ambient Background Glow for Dark Mode */}
             {theme === 'dark' && (
-                <div style={{ position: 'fixed', top: '-20%', left: '50%', transform: 'translateX(-50%)', width: '80vw', height: '80vw', background: 'radial-gradient(circle, var(--primary-glow) 0%, transparent 70%)', zIndex: -1, pointerEvents: 'none' }}></div>
+                <div style={{ position: 'fixed', top: '-20%', left: '50%', transform: 'translateX(-50%)', width: '80vw', height: '80vw', background: 'radial-gradient(circle, rgba(0, 188, 212, 0.06) 0%, transparent 70%)', zIndex: -1, pointerEvents: 'none' }}></div>
             )}
 
             {/* 2. Hero Section */}

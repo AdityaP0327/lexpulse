@@ -46,7 +46,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             <Settings size={18} />
             <span>Settings</span>
           </a>
-          <button className="nav-item" onClick={logout} style={{ width: '100%', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', color: '#F87171' }}>
+          <button className="nav-item" onClick={logout} style={{ width: '100%', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', color: 'var(--danger)' }}>
             <LogOut size={18} />
             <span>Logout</span>
           </button>

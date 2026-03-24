@@ -44,10 +44,10 @@ const TopBar = ({ toggleSidebar }) => {
           {showNotif && (
             <div className="notification-dropdown">
                <h4 style={{ marginBottom: '1rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Notifications</h4>
-               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.875rem', background: 'rgba(59, 130, 246, 0.1)', borderRadius: '6px', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
-                 <Calendar size={20} color="#60A5FA" style={{ flexShrink: 0 }} />
+               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.875rem', background: 'var(--accent-subtle)', borderRadius: '8px', border: '1px solid var(--border)' }}>
+                 <Calendar size={20} style={{ color: 'var(--accent)', flexShrink: 0 }} />
                  <div>
-                   <p style={{ color: '#E2E8F0', fontWeight: 500, fontSize: '0.85rem', marginBottom: '0.2rem' }}>Connected to Calendar</p>
+                   <p style={{ color: 'var(--text-primary)', fontWeight: 500, fontSize: '0.85rem', marginBottom: '0.2rem' }}>Connected to Calendar</p>
                    <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', lineHeight: '1.2' }}>No deadline yet.</p>
                  </div>
                </div>
