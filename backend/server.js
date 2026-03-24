@@ -24,11 +24,12 @@ app.use('/api/tasks', tasksRouter);
 
 // MongoDB Connection
 const connectDB = async () => {
+    mongoose.set('bufferCommands', false);
     try {
-        await mongoose.connect(process.env.MONGO_URI, { serverSelectionTimeoutMS: 2000 });
+        await mongoose.connect(process.env.MONGO_URI, { serverSelectionTimeoutMS: 5000 });
         console.log('MongoDB connected to actual database');
     } catch (err) {
-        console.log('MongoDB connection failed. Using in-memory array fallback for MVP mock...');
+        console.error('MongoDB connection failed. Error:', err.message);
     }
 };
 connectDB();
