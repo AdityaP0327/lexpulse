@@ -726,6 +726,98 @@ input, button, select, textarea {
   background: var(--bg-card);
 }
 
+/* Extended Landing Page Layouts */
+.landing-section {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.landing-section-alt {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  padding: 6rem 2rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto 4rem;
+  line-height: 1.6;
+}
+
+/* Stats Block */
+.stat-block {
+  text-align: center;
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+}
+.stat-number {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  font-family: 'Outfit';
+  margin-bottom: 0.5rem;
+}
+
+/* Pricing & Comparison */
+.pricing-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.pricing-card.popular {
+  border-color: var(--primary);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+}
+.pricing-price {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 1.5rem 0;
+  font-family: 'Outfit';
+}
+.pricing-features {
+  list-style: none;
+  margin: 2rem 0;
+}
+.pricing-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+}
+.comparison-table th, .comparison-table td {
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--border-light);
+  text-align: center;
+}
+.comparison-table th:first-child, .comparison-table td:first-child {
+  text-align: left;
+}
+
 /* =========================================
    RESPONSIVE DESIGN (Mobile-First Media Queries)
    ========================================= */
