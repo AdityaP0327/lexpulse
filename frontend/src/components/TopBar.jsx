@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import { Search, Bell, User, Calendar, Menu } from 'lucide-react';
+import { Search, Bell, Sun, Moon, Calendar, Menu } from 'lucide-react';
 import { AuthContext } from '../context/AuthContext';
+import { ThemeContext } from '../context/ThemeContext';
 
 const TopBar = ({ toggleSidebar }) => {
   const { user } = useContext(AuthContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const [showNotif, setShowNotif] = useState(false);
   const notifRef = useRef(null);
 
@@ -31,6 +33,9 @@ const TopBar = ({ toggleSidebar }) => {
       </div>
       
       <div className="topbar-actions">
+        <button onClick={toggleTheme} className="btn-icon" aria-label="Toggle Theme">
+          {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
         <div style={{ position: 'relative' }} ref={notifRef}>
           <button className="btn-icon" onClick={() => setShowNotif(!showNotif)}>
             <Bell size={20} />

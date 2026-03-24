@@ -18,8 +18,8 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       </div>
       
       <nav className="nav-menu">
-        <NavLink to="/" className={({isActive}) => `nav-item ${isActive ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
-          <Activity size={18} />
+        <NavLink to="/dashboard" className={({isActive}) => `nav-item ${isActive ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
+          <LayoutDashboard size={20} />
           <span>Overview</span>
         </NavLink>
         

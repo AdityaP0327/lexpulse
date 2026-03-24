@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
             await loadUser(res.data.token);
             return { success: true };
         } catch (err) {
-            return { success: false, msg: err.response?.data?.msg || 'Registration failed' };
+            return { success: false, msg: err.response?.data?.msg || (typeof err.response?.data === 'string' ? err.response.data : err.message || 'Registration failed') };
         }
     };
 
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
             await loadUser(res.data.token);
             return { success: true };
         } catch (err) {
-            return { success: false, msg: err.response?.data?.msg || 'Login failed' };
+            return { success: false, msg: err.response?.data?.msg || (typeof err.response?.data === 'string' ? err.response.data : err.message || 'Login failed') };
         }
     };
 

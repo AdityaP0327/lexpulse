@@ -13,7 +13,7 @@ const Login = () => {
         e.preventDefault();
         const res = await login(formData);
         if (res.success) {
-            navigate('/');
+            navigate('/dashboard');
         } else {
             setError(res.msg);
         }

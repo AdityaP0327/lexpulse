@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import TopBar from './components/TopBar';
+import Landing from './pages/Landing';
 import Dashboard from './pages/Dashboard';
 import SmartVault from './pages/SmartVault';
 import Login from './pages/Login';
@@ -9,6 +10,7 @@ import Register from './pages/Register';
 import Tasks from './pages/Tasks';
 import Litigation from './pages/Litigation';
 import { AuthProvider, AuthContext } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, loading } = useContext(AuthContext);
@@ -35,7 +37,8 @@ const AppRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       
-      <Route path="/" element={<ProtectedRoute><MainLayout><Dashboard /></MainLayout></ProtectedRoute>} />
+      <Route path="/" element={<Landing />} />
+      <Route path="/dashboard" element={<ProtectedRoute><MainLayout><Dashboard /></MainLayout></ProtectedRoute>} />
       <Route path="/vault" element={<ProtectedRoute><MainLayout><SmartVault /></MainLayout></ProtectedRoute>} />
       <Route path="/tasks" element={<ProtectedRoute><MainLayout><Tasks /></MainLayout></ProtectedRoute>} />
       <Route path="/litigation" element={<ProtectedRoute><MainLayout><Litigation /></MainLayout></ProtectedRoute>} />
@@ -45,11 +48,13 @@ const AppRoutes = () => {
 
 const App = () => {
   return (
-    <AuthProvider>
-      <Router>
-        <AppRoutes />
-      </Router>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <Router>
+          <AppRoutes />
+        </Router>
+      </AuthProvider>
+    </ThemeProvider>
   );
 };
 
