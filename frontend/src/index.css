@@ -874,16 +874,65 @@ input, button, select, textarea {
     padding: 1rem 1.5rem;
   }
   
-  /* Fix comparison table mobile squeezing */
+  /* Fix comparison table by converting to stacked cards on mobile */
   .table-container {
-    width: 100%;
-    max-width: 100%;
-    margin: 2rem 0;
-    overflow-x: auto;
+    border: none;
+    background: transparent;
+    margin-top: 1rem;
   }
-  
   .comparison-table {
-    min-width: 600px;
+    min-width: 0;
+    width: 100%;
+  }
+  .comparison-table thead {
+    display: none; /* Hide headers */
+  }
+  .comparison-table tbody tr {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .comparison-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    text-align: right;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .comparison-table tbody td:last-child {
+    border-bottom: none;
+  }
+  /* The first column is the Feature Name */
+  .comparison-table tbody td:nth-child(1) {
+    background: rgba(0,0,0,0.2);
+    font-weight: 700;
+    font-size: 1.125rem;
+    justify-content: center;
+    text-align: center;
+  }
+  /* Inject pseudo-headers for the comparisons */
+  .comparison-table tbody td:nth-child(2)::before {
+    content: 'LexPulse';
+    color: var(--primary);
+    font-weight: 700;
+    margin-right: auto;
+  }
+  .comparison-table tbody td:nth-child(3)::before {
+    content: 'Law Firms';
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-right: auto;
+  }
+  .comparison-table tbody td:nth-child(4)::before {
+    content: 'DIY Methods';
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-right: auto;
   }
   
   .comparison-table th, .comparison-table td {
