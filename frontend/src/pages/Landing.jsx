@@ -47,7 +47,7 @@ const Landing = () => {
                         ) : (
                             <>
                                 <Link to="/login" style={{ fontWeight: 500, color: 'var(--text-secondary)' }}>Login</Link>
-                                <Link to="/register" className="btn btn-primary">Join Waitlist</Link>
+                                <Link to="/register" className="btn btn-primary">Signup</Link>
                             </>
                         )}
                     </div>
@@ -64,8 +64,8 @@ const Landing = () => {
                     Transforming Law from Reactive Crisis to Proactive Protection. Managing a business shouldn't feel like walking through a legal minefield. LexPulse monitors your legal health 24/7, giving you the clarity and tools to protect what you've built.
                 </p>
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-                    <button onClick={handleGetStarted} className="btn btn-primary" style={{ padding: '0.875rem 2rem', fontSize: '1.125rem' }}>
-                        Join the Waitlist
+                    <button onClick={handleGetStarted} className="btn btn-primary" style={{ padding: '0.875rem 2rem', fontSize: '1.125rem', borderRadius: '40px' }}>
+                        Signup
                     </button>
                     <a href="#problem" className="btn btn-secondary" style={{ padding: '0.875rem 2rem', fontSize: '1.125rem' }}>
                         See the Problem
@@ -263,47 +263,7 @@ const Landing = () => {
                 </div>
             </section>
 
-            {/* 10. Risk Simulator */}
-            <section className="landing-section">
-                <h2 className="section-title">Calculate the Cost of Inaction</h2>
-                <p className="section-subtitle">Use our interactive simulator to estimate potential regulatory fines and dispute costs if compliance is ignored.</p>
-                
-                <div className="card glass-panel" style={{ maxWidth: '700px', margin: '0 auto', padding: '3rem' }}>
-                    <div style={{ marginBottom: '2rem' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                            <label style={{ fontWeight: 600 }}>Employee Headcount</label>
-                            <span className="text-gradient" style={{ fontWeight: 700 }}>{employeeCount} People</span>
-                        </div>
-                        <input 
-                            type="range" min="1" max="250" value={employeeCount} 
-                            onChange={(e) => setEmployeeCount(e.target.value)}
-                            style={{ width: '100%', accentColor: 'var(--primary)' }}
-                        />
-                    </div>
-                    
-                    <div style={{ marginBottom: '3rem' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                            <label style={{ fontWeight: 600 }}>Annual Revenue</label>
-                            <span className="text-gradient" style={{ fontWeight: 700 }}>${revenue}K</span>
-                        </div>
-                        <input 
-                            type="range" min="100" max="5000" step="100" value={revenue} 
-                            onChange={(e) => setRevenue(e.target.value)}
-                            style={{ width: '100%' }}
-                        />
-                    </div>
 
-                    <div style={{ background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.2)', padding: '2rem', borderRadius: '12px', textAlign: 'center' }}>
-                        <p style={{ color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>Estimated Annual Risk Exposure</p>
-                        <h3 style={{ fontSize: '3.5rem', color: '#EF4444', fontFamily: 'Outfit' }}>
-                            ${(employeeCount * 1200 + revenue * 5).toLocaleString()}
-                        </h3>
-                        <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
-                            *Based on average unmitigated HR class actions and baseline regulatory fines.
-                        </p>
-                    </div>
-                </div>
-            </section>
 
             {/* 11. Industry Verticals */}
             <section className="landing-section-alt">
@@ -425,8 +385,8 @@ const Landing = () => {
             <footer style={{ padding: '6rem 2rem', textAlign: 'center', borderTop: '1px solid var(--border-light)' }}>
                 <h2 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '1.5rem' }}>Be Among the First to Get Legal Control.</h2>
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginBottom: '4rem' }}>
-                    <button onClick={handleGetStarted} className="btn btn-primary" style={{ padding: '1rem 3rem', fontSize: '1.125rem', borderRadius: '30px' }}>
-                        Join Waitlist Now
+                    <button onClick={handleGetStarted} className="btn btn-primary" style={{ padding: '1rem 3rem', fontSize: '1.125rem', borderRadius: '40px' }}>
+                        Signup Now
                     </button>
                 </div>
                 
@@ -441,7 +401,7 @@ const Landing = () => {
                         <h4 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>Product</h4>
                         <p style={{ marginBottom: '0.5rem', cursor: 'pointer' }}>Features</p>
                         <p style={{ marginBottom: '0.5rem', cursor: 'pointer' }}>Pricing</p>
-                        <p style={{ marginBottom: '0.5rem', cursor: 'pointer' }}>Waitlist</p>
+                        <p style={{ marginBottom: '0.5rem', cursor: 'pointer' }}>Signup</p>
                     </div>
                     <div>
                         <h4 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>Company</h4>
