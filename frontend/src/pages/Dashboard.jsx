@@ -87,38 +87,8 @@ const Dashboard = () => {
         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Welcome back. Here's your organization's legal health at a glance.</p>
       </div>
 
-      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          SECTION 1 — Quick Stats Row
-         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '1rem', marginBottom: '2.5rem' }}>
-        <Card style={{ textAlign: 'center', padding: '1.5rem' }}>
-          <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>Health Score</div>
-          <div style={{ fontSize: '2.5rem', fontWeight: 700, color: score !== null ? scoreColor : 'var(--text-muted)', lineHeight: 1 }}>
-            {dashboardLoading ? '—' : score !== null ? score : 'N/A'}
-          </div>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>{score !== null ? (score > 80 ? 'Excellent' : score > 50 ? 'Moderate Risk' : 'Critical') : 'No data'}</div>
-        </Card>
 
-        <Card style={{ textAlign: 'center', padding: '1.5rem' }}>
-          <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>Documents Scanned</div>
-          <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--primary)', lineHeight: 1 }}>{dashboardLoading ? '—' : healthData.totalDocuments}</div>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>Total analyzed</div>
-        </Card>
 
-        <Card style={{ textAlign: 'center', padding: '1.5rem' }}>
-          <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>Active Alerts</div>
-          <div style={{ fontSize: '2.5rem', fontWeight: 700, color: healthData.alerts.length > 0 ? '#EF4444' : '#10B981', lineHeight: 1 }}>{dashboardLoading ? '—' : healthData.alerts.length}</div>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>{healthData.alerts.length === 0 ? 'All clear' : 'Needs attention'}</div>
-        </Card>
-
-        <Card style={{ textAlign: 'center', padding: '1.5rem' }}>
-          <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>Pending Tasks</div>
-          <div style={{ fontSize: '2.5rem', fontWeight: 700, color: upcomingTasks.length > 0 ? '#F59E0B' : '#10B981', lineHeight: 1 }}>{upcomingTasks.length}</div>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>{upcomingTasks.length === 0 ? 'All done' : 'Due soon'}</div>
-        </Card>
-      </div>
-
-      <Divider />
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           SECTION 2 — Health Score Ring + Alerts
