@@ -174,8 +174,8 @@ const Dashboard = () => {
                  Syncing Vault Data...
                </div>
             ) : healthData.alerts.length === 0 ? (
-              <div className="alert-item" style={{ background: 'var(--success-bg-light)', border: '1px solid var(--success-border)' }}>
-                <div className="alert-icon" style={{ background: 'var(--success-bg-dark)', color: 'var(--success-color)' }}><CheckCircle size={20} /></div>
+              <div className="alert-item" style={{ background: 'rgba(16, 185, 129, 0.05)', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
+                <div className="alert-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10B981' }}><CheckCircle size={20} /></div>
                 <div className="alert-content">
                   <h4 style={{ color: 'var(--text-primary)' }}>Zero Active Threats</h4>
                   <p style={{ color: 'var(--text-secondary)' }}>All organizational documents are in good standing.</p>

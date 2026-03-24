@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Activity, Shield, FileText, Settings, HelpCircle, CheckSquare, Gavel, LogOut, X } from 'lucide-react';
+import { Activity, Shield, FileText, Settings, HelpCircle, CheckSquare, Gavel, LogOut, X, LayoutDashboard } from 'lucide-react';
 import { AuthContext } from '../context/AuthContext';
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
