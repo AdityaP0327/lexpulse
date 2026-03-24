@@ -253,6 +253,10 @@ input, button, select, textarea {
 .badge-danger { background: rgba(239, 68, 68, 0.15); color: #F87171; border: 1px solid rgba(239, 68, 68, 0.3); }
 .badge-info { background: rgba(59, 130, 246, 0.15); color: #60A5FA; border: 1px solid rgba(59, 130, 246, 0.3); }
 
+/* Utilities */
+.mobile-only { display: none !important; }
+.desktop-only { display: inline-block; }
+
 /* Sidebar */
 .sidebar {
   width: 260px;
@@ -658,66 +662,57 @@ input, button, select, textarea {
 
 /* ---------- < 900px: Tablet & Mobile ---------- */
 @media (max-width: 899px) {
-  /* Flip the whole layout: sidebar on top, content below */
-  .app-container {
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
-  }
+  .mobile-only { display: inline-flex !important; }
+  .desktop-only { display: none !important; }
 
+  /* App Layout fixes for slide-over sidebar */
+  .app-container {
+    flex-direction: row;
+  }
+  
   .main-content {
     flex: 1;
-    height: auto;
-    min-height: 0; /* Allow flex shrink */
     overflow-y: auto;
   }
 
-  /* Sidebar snaps into a horizontal nav bar */
+  /* Sidebar becomes a slide-over pane */
   .sidebar {
-    width: 100%;
-    min-height: 60px;
-    height: auto;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.75rem 1rem;
-    border-right: none;
-    border-bottom: 1px solid var(--border-light);
-    flex-shrink: 0;
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 100;
+    left: -280px;
+    width: 260px;
+    height: 100vh;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    border-right: 1px solid var(--border-light);
+    background: var(--bg-nav);
   }
 
-  /* Hide secondary nav items (Settings, Support) on mobile nav bar */
-  .nav-secondary {
-    display: none !important;
+  .sidebar.open {
+    transform: translateX(280px);
   }
 
-  /* Sidebar logo padding reset */
   .logo-container {
-    padding: 0;
+    padding: 0 0.5rem 1.5rem;
+    justify-content: space-between;
   }
 
-  .logo-image {
-    max-height: 40px;
-    width: auto;
-    border-radius: 6px;
-  }
-
-  /* Sidebar nav items in a row */
+  /* Nav menu uses column layout again */
   .nav-menu {
-    flex-direction: row;
-    gap: 0.5rem;
-    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 0.25rem;
   }
-
   .nav-item {
-    padding: 0.5rem 0.75rem;
-    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    gap: 0.75rem;
+  }
+  .nav-item span {
+    display: inline;
   }
 
-  /* Topbar no longer needs absolute-top offset */
+  /* Keep topbar sticky */
   .topbar {
     position: sticky;
     top: 0;
@@ -792,9 +787,9 @@ input, button, select, textarea {
     font-size: 2.25rem;
   }
 
-  /* Nav text labels hidden on smallest screens */
+  /* Nav text labels visible in slide-out sidebar */
   .nav-item span {
-    display: none;
+    display: inline;
   }
 
   .nav-item {

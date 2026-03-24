@@ -14,9 +14,13 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 // Routes
 const documentsRouter = require('./routes/documents');
 const dashboardRouter = require('./routes/dashboard');
+const authRouter = require('./routes/auth');
+const tasksRouter = require('./routes/tasks');
 
 app.use('/api/documents', documentsRouter);
 app.use('/api/health-score', dashboardRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/tasks', tasksRouter);
 
 // MongoDB Connection
 const connectDB = async () => {

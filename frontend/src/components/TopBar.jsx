@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Search, Bell, User, Calendar } from 'lucide-react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { Search, Bell, User, Calendar, Menu } from 'lucide-react';
+import { AuthContext } from '../context/AuthContext';
 
-const TopBar = () => {
+const TopBar = ({ toggleSidebar }) => {
+  const { user } = useContext(AuthContext);
   const [showNotif, setShowNotif] = useState(false);
   const notifRef = useRef(null);
 
@@ -18,9 +20,14 @@ const TopBar = () => {
   }, []);
   return (
     <header className="topbar">
-      <div className="search-bar">
-        <Search size={16} />
-        <input type="text" placeholder="Search documents, alerts..." />
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <button className="mobile-only btn-icon" onClick={toggleSidebar}>
+          <Menu size={24} />
+        </button>
+        <div className="search-bar">
+          <Search size={16} />
+          <input type="text" placeholder="Search documents, alerts..." />
+        </div>
       </div>
       
       <div className="topbar-actions">
@@ -44,8 +51,8 @@ const TopBar = () => {
         </div>
         
         <div className="user-profile">
-          <div className="avatar">U</div>
-          <span style={{ fontSize: '0.875rem', fontWeight: 500 }}>User</span>
+          <div className="avatar">{user?.businessName?.charAt(0) || 'U'}</div>
+          <span style={{ fontSize: '0.875rem', fontWeight: 500 }} className="desktop-only">{user?.businessName || 'User'}</span>
         </div>
       </div>
     </header>

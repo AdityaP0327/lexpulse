@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { ShieldAlert, AlertTriangle, Info, FileText, CheckCircle, UploadCloud, FolderPlus } from 'lucide-react';
+import { ShieldAlert, AlertTriangle, Info, FileText, CheckCircle, UploadCloud, FolderPlus, CheckSquare, Clock } from 'lucide-react';
 import axios from 'axios';
 import API_URL from '../config';
 
@@ -12,6 +12,7 @@ const Dashboard = () => {
     alerts: []
   });
   const [dashboardLoading, setDashboardLoading] = useState(true);
+  const [upcomingTasks, setUpcomingTasks] = useState([]);
 
   // AI Analysis State
   const [file, setFile] = useState(null);
@@ -34,8 +35,19 @@ const Dashboard = () => {
     }
   };
 
+  const fetchUpcomingTasks = async () => {
+    try {
+      const res = await axios.get(`${API_URL}/tasks`);
+      const pending = res.data.filter(t => t.status === 'pending').sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate)).slice(0, 3);
+      setUpcomingTasks(pending);
+    } catch (err) {
+      console.error("Error fetching tasks", err);
+    }
+  };
+
   useEffect(() => {
     fetchHealthScore();
+    fetchUpcomingTasks();
   }, []);
 
   const handleFileUpload = async (selectedFile) => {
@@ -201,6 +213,30 @@ const Dashboard = () => {
               ))
             )}
           </div>
+        </div>
+      </div>
+
+      {/* Upcoming Tasks Preview */}
+      <div className="dashboard-grid" style={{ marginBottom: '2rem', gridTemplateColumns: '1fr' }}>
+        <div className="card" style={{ background: 'var(--bg-surface)' }}>
+          <h3 style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.25rem' }}>
+            <CheckSquare size={20} className="text-gradient" />
+            Upcoming Tasks
+          </h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem' }}>
+            {upcomingTasks.length > 0 ? upcomingTasks.map(task => (
+              <div key={task._id} style={{ display: 'flex', justifyContent: 'space-between', padding: '1rem', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid var(--border-light)' }}>
+                <div>
+                  <h4 style={{ marginBottom: '0.25rem' }}>{task.title}</h4>
+                  <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Due: {new Date(task.dueDate).toLocaleDateString()}</div>
+                </div>
+                <div style={{ color: '#FBBF24', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}><Clock size={16} /> Pending</div>
+              </div>
+            )) : (
+              <div style={{ padding: '1.5rem', color: 'var(--text-muted)' }}>No upcoming tasks.</div>
+            )}
+          </div>
+          <Link to="/tasks" className="btn btn-secondary" style={{ marginTop: '1.5rem' }}>View All Tasks</Link>
         </div>
       </div>
 
