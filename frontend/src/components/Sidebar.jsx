@@ -11,7 +11,8 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
     {isOpen && <div className="sidebar-overlay" onClick={() => setIsOpen(false)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 10 }}></div>}
     <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="logo-container">
-        <img src="/logo.png" alt="LexPulse Logo" className="logo-image" />
+        <img src="/logo.png" alt="LexPulse Logo" style={{ height: '36px', objectFit: 'contain' }} />
+        <span className="logo-text">LexPulse</span>
         <button className="mobile-only btn-icon" onClick={() => setIsOpen(false)} style={{ marginLeft: 'auto' }}>
           <X size={24} />
         </button>

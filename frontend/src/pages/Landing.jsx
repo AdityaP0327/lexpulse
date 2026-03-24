@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { 
-    Scale, Moon, Sun, ArrowRight, ShieldCheck, FileText, 
+    Moon, Sun, ArrowRight, ShieldCheck, FileText, 
     BrainCircuit, Calendar, TrendingUp, AlertTriangle, 
     CheckCircle2, XCircle, Search, Building2, Factory,
     Stethoscope, Computer, Briefcase, Pill, Laptop, Bell
@@ -26,8 +26,8 @@ const Landing = () => {
             {/* 1. Navigation Bar */}
             <nav className="landing-navbar">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <div className="logo-icon"><Scale size={20} /></div>
-                    <span className="logo-text">LexPulse</span>
+                    <img src="/logo.png" alt="LexPulse" style={{ height: '32px', objectFit: 'contain' }} />
+                    <span className="logo-text desktop-only">LexPulse</span>
                 </div>
                 
                 <div className="desktop-only" style={{ display: 'flex', gap: '1.5rem', fontWeight: 500, color: 'var(--text-secondary)' }}>
@@ -37,17 +37,17 @@ const Landing = () => {
                     <a href="#pricing">Pricing</a>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     <button onClick={toggleTheme} className="theme-toggle" aria-label="Toggle Theme">
                         {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
                     </button>
-                    <div className="desktop-only" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                         {isAuthenticated ? (
-                            <Link to="/dashboard" className="btn btn-primary">Go to Dashboard</Link>
+                            <Link to="/dashboard" className="btn btn-primary" style={{ padding: '0.5rem 1rem' }}>Dashboard</Link>
                         ) : (
                             <>
-                                <Link to="/login" style={{ fontWeight: 500, color: 'var(--text-secondary)' }}>Login</Link>
-                                <Link to="/register" className="btn btn-primary">Signup</Link>
+                                <Link to="/login" className="desktop-only" style={{ fontWeight: 500, color: 'var(--text-secondary)', marginRight: '0.5rem' }}>Login</Link>
+                                <Link to="/register" className="btn btn-primary" style={{ padding: '0.5rem 1rem' }}>Signup</Link>
                             </>
                         )}
                     </div>
@@ -392,8 +392,9 @@ const Landing = () => {
                 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', textAlign: 'left', maxWidth: '1000px', margin: '0 auto', color: 'var(--text-secondary)' }}>
                     <div>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>
-                            <Scale size={24} /> <span style={{ fontWeight: 700, fontSize: '1.25rem' }}>LexPulse</span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>
+                            <img src="/logo.png" alt="LexPulse" style={{ height: '32px', filter: theme === 'dark' ? 'brightness(1)' : 'brightness(0)' }} /> 
+                            <span style={{ fontWeight: 700, fontSize: '1.25rem' }}>LexPulse</span>
                         </div>
                         <p style={{ fontSize: '0.875rem' }}>Transforming law from reactive crisis to proactive daily protection globally.</p>
                     </div>
