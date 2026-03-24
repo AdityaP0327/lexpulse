@@ -54,8 +54,13 @@ const Landing = () => {
                 </div>
             </nav>
 
+            {/* Ambient Background Glow for Dark Mode */}
+            {theme === 'dark' && (
+                <div style={{ position: 'fixed', top: '-20%', left: '50%', transform: 'translateX(-50%)', width: '80vw', height: '80vw', background: 'radial-gradient(circle, var(--primary-glow) 0%, transparent 70%)', zIndex: -1, pointerEvents: 'none' }}></div>
+            )}
+
             {/* 2. Hero Section */}
-            <header className="landing-section" style={{ paddingTop: '8rem', textAlign: 'center' }}>
+            <header className="landing-section" style={{ paddingTop: '8rem', textAlign: 'center', position: 'relative' }}>
                 <div className="badge badge-info" style={{ marginBottom: '2rem' }}>New: Legal Health Score Beta 🚀</div>
                 <h1 className="landing-title">
                     AI-Powered Legal <span className="text-gradient">Health Companion.</span>
@@ -74,7 +79,10 @@ const Landing = () => {
 
                 {/* Hero Mockup Graphic */}
                 <div style={{ marginTop: '5rem', position: 'relative' }}>
-                    <div className="glass-panel" style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto', textAlign: 'left', position: 'relative', zIndex: 2 }}>
+                    {/* Secondary subtle glow behind the panel */}
+                    <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', height: '100%', background: 'linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(168, 85, 247, 0.2))', filter: 'blur(80px)', zIndex: 0, pointerEvents: 'none', borderRadius: '50%' }}></div>
+                    
+                    <div className="glass-panel" style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto', textAlign: 'left', position: 'relative', zIndex: 2, background: 'var(--bg-surface)', border: '1px solid rgba(255,255,255,0.05)' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
                             <div>
                                 <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Legal Health Score</h3>

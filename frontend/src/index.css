@@ -73,7 +73,7 @@
 body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bg-main);
-  background-image: radial-gradient(circle at 15% 50%, rgba(0, 194, 255, 0.03), transparent 25%), radial-gradient(circle at 85% 30%, rgba(255, 59, 48, 0.03), transparent 25%);
+  background-image: radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.03), transparent 25%), radial-gradient(circle at 85% 30%, rgba(168, 85, 247, 0.03), transparent 25%); /* Adjusted for new brand gradient colors */
   color: var(--text-primary);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -99,7 +99,7 @@ input, button, select, textarea {
 
 /* Utilities */
 .text-gradient {
-  background: var(--brand-gradient);
+  background: linear-gradient(135deg, #60A5FA 0%, #A855F7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -304,7 +304,7 @@ input, button, select, textarea {
   width: 100%;
   height: auto;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0, 194, 255, 0.2), 0 0 20px rgba(255, 59, 48, 0.2);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2), 0 0 20px rgba(168, 85, 247, 0.2); /* Adjusted for new brand gradient colors */
 }
 
 .logo-icon {
@@ -811,9 +811,10 @@ input, button, select, textarea {
   margin-top: 2rem;
 }
 .comparison-table th, .comparison-table td {
-  padding: 1.25rem;
+  padding: 1.5rem 1rem;
   border-bottom: 1px solid var(--border-light);
   text-align: center;
+  min-width: 150px; /* guarantees scroll bounds */
 }
 .comparison-table th:first-child, .comparison-table td:first-child {
   text-align: left;
@@ -857,6 +858,19 @@ input, button, select, textarea {
   }
   .landing-navbar {
     padding: 1rem 1.5rem;
+  }
+  
+  /* Fix comparison table mobile squeezing */
+  .comparison-table th, .comparison-table td {
+    padding: 1rem 0.5rem;
+    font-size: 0.875rem;
+    min-width: 120px;
+  }
+  .comparison-table th:first-child, .comparison-table td:first-child {
+    position: sticky;
+    left: 0;
+    background: var(--bg-main);
+    z-index: 2;
   }
 
   /* App Layout fixes for slide-over sidebar */
