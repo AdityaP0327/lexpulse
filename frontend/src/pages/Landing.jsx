@@ -399,7 +399,7 @@ const Landing = () => {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', textAlign: 'left', maxWidth: '1000px', margin: '0 auto', color: 'var(--text-secondary)' }}>
                     <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>
-                            <img src="/logo.png" alt="LexPulse" style={{ height: '32px', filter: theme === 'dark' ? 'brightness(1)' : 'brightness(0)' }} /> 
+                            <img src="/logo.png" alt="LexPulse" style={{ height: '32px' }} /> 
                             <span style={{ fontWeight: 700, fontSize: '1.25rem' }}>LexPulse</span>
                         </div>
                         <p style={{ fontSize: '0.875rem' }}>Transforming law from reactive crisis to proactive daily protection globally.</p>
