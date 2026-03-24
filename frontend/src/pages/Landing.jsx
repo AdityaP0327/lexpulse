@@ -348,7 +348,7 @@ const Landing = () => {
                     <h2 className="section-title">Transparent, Scalable Pricing</h2>
                     <p className="section-subtitle">No hourly billing surprises. Just world-class legal software.</p>
                     
-                    <div className="page-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
+                    <div className="page-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))' }}>
                         <div className="pricing-card">
                             <h3 style={{ fontSize: '1.5rem', color: 'var(--text-secondary)' }}>Core Plan</h3>
                             <div className="pricing-price">$39<span style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>/mo</span></div>
