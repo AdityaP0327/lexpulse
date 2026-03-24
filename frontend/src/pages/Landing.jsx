@@ -302,7 +302,7 @@ const Landing = () => {
             {/* 12. Comparison Table */}
             <section className="landing-section">
                 <h2 className="section-title">Why LexPulse Wins</h2>
-                <div style={{ overflowX: 'auto', marginTop: '3rem' }}>
+                <div className="table-container">
                     <table className="comparison-table">
                         <thead>
                             <tr>
